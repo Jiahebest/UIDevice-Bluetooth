@@ -12,7 +12,15 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        print(UIDevice.current.systemVersion)
+        NotificationCenter.default.addObserver(self, selector: #selector(notice), name: NSNotification.Name.UIDeviceProximityStateDidChange, object: nil)
+    }
+    func notice(){
+        if UIDevice.current.proximityState{
+            print("远")
+        }else{
+            print("close")
+        }
     }
 
     override func didReceiveMemoryWarning() {
